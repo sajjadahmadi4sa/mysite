@@ -818,7 +818,7 @@ td, th {
 /* =================================== */
 /*---------- Start Elements Page -------------*/
 .whole-wrap {
-  background-color: #4a4a4a;
+  background-color: #333333;
 }
 
 .generic-banner {
@@ -877,7 +877,7 @@ td, th {
 
 .section-top-border {
   padding: 50px 0;
-  border-top: 1px dotted #eee;
+  border-top: 1px dotted #757575;
 }
 
 .switch-wrap {
@@ -2137,7 +2137,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu ul {
   position: absolute;
   display: none;
-  top: 100%;
+  top: 80%;
   right: 0;
   z-index: 99;
 }
@@ -2546,7 +2546,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 @media (max-width: 767px) {
   .banner-left {
-    margin-top: 120px;
+    margin-top: 100px;
     margin-bottom: 60px;
   }
 }
@@ -2590,7 +2590,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-weight: 300;
   border-radius: 0px;
   margin-bottom: 10px;
-  border-color: #eee;
+  border-color: #f9f8f8;
 }
 
 .banner-right .form-wrap .form-control:focus {
@@ -2599,7 +2599,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 @media (max-width: 1024px) {
   .banner-right {
-    margin-top: 40px;
+    margin-top: 20px;
   }
 }
 
@@ -3273,7 +3273,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .blog-home-banner .primary-btn {
   border-radius: 0px;
-  background: #fff;
+  background: #575757;
   color: #222;
   font-weight: 600;
   border: 1px solid transparent;
@@ -3285,8 +3285,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .blog-home-banner .primary-btn:hover {
   background: transparent;
-  border-color: #fff;
-  color: #fff;
+  border-color: #5a5959;
+  color: #474747;
 }
 
 .blog-home-banner .overlay-bg {
@@ -4161,7 +4161,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .contact-page-area .contact-btns:hover {
-  color: #fff;
+  color: #1e1d1d;
 }
 
 .contact-page-area .form-area .form-control:focus {
