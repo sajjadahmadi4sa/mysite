@@ -8,4 +8,8 @@ class Contact (models.Model):
     created_date = models.DateField(auto_now_add=True)
     updated_date =  models.DateField(auto_now=True)
     
+    def __str__(self):
+        return self.name
+    class Meta:
+        ordering = ['created_date']
 # Create your models here.
