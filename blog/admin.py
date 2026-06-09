@@ -1,7 +1,10 @@
 from django.contrib import admin
-from blog.models import Post
+from blog.models import Post , Category
+admin.site.register(Category)
 #admin.site.register(Post,PostAdmin)
 @admin.register(Post)
+
+
 class PostAdmin (admin.ModelAdmin):
     date_hierarchy = 'published_date'
     empty_value_dislay = '_empty_'
