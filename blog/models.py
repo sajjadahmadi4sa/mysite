@@ -22,5 +22,10 @@ class Post (models.Model):
         return self.title
     class Meta:
         ordering = ['created_date']
+    # def snippets(self):
+    #     return self.content[:100] + '...'
+    
+    def excerpt (self):
+        return ' '.join(self.content.split()[:20]) + '...'
     
 # Create your models here.
