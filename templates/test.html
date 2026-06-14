@@ -1,3 +1,4 @@
+{% load blog_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{post.title}}</h1>
-    <p>  {{post.content}} </p>
-    <small> {{post.published_date}}</small>
+    <h1>
+       posts:   
+    </h1>
+    <p> {% popularposts %}  </p>
+    <small> </small>
 </body>
 </html>
