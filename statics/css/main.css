@@ -2942,8 +2942,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
 
-  width: 100%;
-  height: 250px;
+  width: 90%;
+  height: 350px;
   object-fit: cover;
 }
 

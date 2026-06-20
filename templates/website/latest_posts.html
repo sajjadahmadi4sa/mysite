@@ -1,41 +1,56 @@
-<div class="row">
-    {% for post in posts %}
-    <div class="col-lg-4 col-md-6 mb-4">
+{% for post in posts %}
+<div class="single-recent-blog-post mb-5">
 
-        <div class="single-recent-blog-post">
+    <div class="thumb">
+        <img class="img-fluid"
+             src="{{ post.image.url }}"
+             alt="">
+    </div>
 
-            <div class="thumb">
-                <img class="img-fluid latest-post-img"
-                     src="{{ post.image.url }}"
-                     alt="">
-            </div>
+    <div class="details">
 
-            <div class="details">
-
-                <div class="tags">
-                    <ul>
-                        {% for cat in post.Category.all %}
-                        <li>
-                            <a href="#">{{ cat.name }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-
-                <a href="{% url 'blog:single' pid=post.id %}">
-                    <h4 class="title">{{ post.title }}</h4>
-                </a>
-
-                <p>{{ post.content|truncatewords:15 }}</p>
-
-                <h6 class="date">
-                    {{ post.published_date|date:"d M Y" }}
-                </h6>
-
-            </div>
-
+        <div class="tags">
+            <ul>
+                {% for cat in post.Category.all %}
+                <li>
+                    <a href="{% url 'blog:category' cat_name=cat.name %}">
+                        {{ cat.name }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
 
+        <a href="{% url 'blog:single' pid=post.id %}">
+            <h4 class="title">{{ post.title }}</h4>
+        </a>
+
+        <p>{{ post.content|truncatewords:15 }}</p>
+
+        <h6 class="date">
+            {{ post.published_date|date:"d M Y" }}
+        </h6>
+
     </div>
-    {% endfor %}
 </div>
+{% endfor %}
+<nav class="blog-pagination justify-content-center d-flex">
+                <ul class="pagination">
+           {% if posts.has_previous %}
+            <li class="page-item">
+            <a href="?page={{ posts.previous_page_number }}" class="page-link">
+            <span class="lnr lnr-chevron-left"></span></a></li>
+           {% endif %}
+           
+           {% for i in posts.paginator.page_range %}
+            <li class="page-item {% if posts.number == i %}active{% endif %}">
+            <a href="?page={{ i }}" class="page-link">{{ i }}</a></li>
+           {% endfor %}
+
+            {% if posts.has_next %}
+               <li class="page-item">
+                <a href="?page={{ posts.next_page_number }}" class="page-link">
+                <span class="lnr lnr-chevron-right"></span></a></li>
+            {% endif %}
+               </ul>
+              </nav>
