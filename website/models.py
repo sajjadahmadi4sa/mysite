@@ -12,4 +12,11 @@ class Contact (models.Model):
         return self.name
     class Meta:
         ordering = ['created_date']
+        
+class Newsletter (models.Model):
+    email = models.EmailField()
+    def __str__(self):
+        return self.email
+    
+    
 # Create your models here.
