@@ -22,58 +22,98 @@
                 <div class="card-body">
 
                     <form method="post">
-
                         {% csrf_token %}
+                            {% if form.errors %}
+                            <div class="alert alert-danger">
+                                {{ form.errors }}
+                            </div>
+                            {% endif %}
+                        <!-- Username -->
+                        <div class="form-group">
+                            <label for="{{ form.username.id_for_label }}">
+                                Username
+                            </label>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
+
+                                {{ form.username }}
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="{{ form.email.id_for_label }}">
+                                Email
+                            </label>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </div>
+
+                                {{ form.email }}
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="{{ form.password1.id_for_label }}">
+                                Password
+                            </label>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                </div>
+
+                                {{ form.password1 }}
+                            </div>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="form-group">
+                            <label for="{{ form.password2.id_for_label }}">
+                                Confirm Password
+                            </label>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                </div>
+
+                                {{ form.password2 }}
+                            </div>
+                        </div>
 
                         <div class="form-group">
-                       <label for="{{ form.username.id_for_label }}">Username</label>
-
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="fas fa-user"></i>
-                            </span>
-                        </div>
-                        {{ form.username }}
-                    </div>
-                </div>
-
-                                        <div class="form-group">
-                    <label for="{{ form.password1.id_for_label }}">Password</label>
-
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </div>
-                        {{ form.password1 }}
-                    </div>
-                </div>>
-
-                                        <div class="form-group">
-                    <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
-
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </div>
-                        {{ form.password2 }}
-                    </div>
-                </div>
-
-                        <div class="form-group">
-
-                            <input type="submit"
-                                   value="Create Account"
-                                   class="btn float-right login_btn">
-
+                            <button type="submit"
+                                    class="btn login_btn btn-block">
+                                Create Account
+                            </button>
                         </div>
 
                     </form>
 
+                </div>
+
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Already have an account?
+                        <a href="{% url 'accounts:login' %}">
+                            Login
+                        </a>
+                    </div>
                 </div>
 
             </div>
