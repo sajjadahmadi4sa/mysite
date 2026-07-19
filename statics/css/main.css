@@ -4484,19 +4484,17 @@ body.mobile-nav-active #mobile-nav-toggle {
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-}
+  transition: all 0.3s ease 0s;}
 
 .single-footer-widget ul li a:hover {
-  color: #f8b600;
-}
+  color: #f8b600;}
 
 .footer-bottom {
   padding-top: 40px;
   margin-top: 20px;
-  border-top: 1px solid #333;
-}
+  border-top: 1px solid #333;}
 
 .footer-text a, .footer-text i {
-  color: #f8b600;
-}
+  color: #f8b600;}
+
+

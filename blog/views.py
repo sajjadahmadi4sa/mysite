@@ -1,10 +1,12 @@
-from django.shortcuts import render , get_object_or_404
+from django.shortcuts import render , get_object_or_404 , redirect
 from blog.models import Post , Comment
 from django.utils import timezone
 from django.core.paginator import Paginator , PageNotAnInteger,EmptyPage
-from django.http import HttpResponse
+from django.http import HttpResponse , HttpResponseRedirect
 from blog.forms import CommentForm
 from django.contrib import messages
+from django.urls import reverse
+
 def blog_view(request , cat_name=None , author_username=None , tag_name=None):
     posts = Post.objects.filter(published_date__lte=timezone.now(),status = 1)
     if cat_name:
@@ -25,24 +27,26 @@ def blog_view(request , cat_name=None , author_username=None , tag_name=None):
     return render(request,'blog/blog-home.html',context)
 
 def blog_single(request, pid):
+    posts = get_object_or_404(Post, id=pid, status=True)
+    if posts.login_require and not request.user.is_authenticated:
+        return redirect(f"{reverse('accounts:login')}?next={request.path}")
+
     if request.method == 'POST':
         form = CommentForm(request.POST)
-        if form.is_valid() :
+        if form.is_valid():
             form.save()
-            messages.add_message(request,messages.SUCCESS,'comment submit succesfuly')
+            messages.success(request, 'Comment submitted successfully')
         else:
-            messages.add_message(request,messages.ERROR,'comment is not submited ')
-    posts = get_object_or_404(Post,id=pid,status=True)
-    form = CommentForm()
-    next_post = Post.objects.filter(id__gt = posts.id,status=True).order_by('id').first()
-    previous_post = Post.objects.filter(id__lt = posts.id,status=True).order_by('-id').first()
+            messages.error(request, 'Comment is not submitted')
+
+    next_post = Post.objects.filter(id__gt=posts.id,status=True).order_by('id').first()
+    previous_post = Post.objects.filter(id__lt=posts.id,status=True).order_by('-id').first()
     posts.counted_view += 1
     posts.save()
     comments = Comment.objects.filter(post=posts.id,approved=True).order_by('-created_date')
-    print(comments)
-    print(comments.count())
-    context = {'posts': posts , 'next_post':next_post , 'previous_post':previous_post , 'comments':comments,'form':form}
-    return render(request,'blog/blog-single.html',context)
+    form = CommentForm()
+    context = {'posts': posts,'next_post': next_post,'previous_post': previous_post,'comments': comments,'form': form,}
+    return render(request, 'blog/blog-single.html', context)
 
 def test(request):
     posts = Post.objects.filter(status = 1)

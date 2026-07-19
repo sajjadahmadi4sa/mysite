@@ -18,12 +18,13 @@ class CommentAdmin (admin.ModelAdmin):
 class PostAdmin (SummernoteModelAdmin):
     date_hierarchy = 'published_date'
     empty_value_display = '_empty_'
-    list_display = ('title','author','published_date','created_date','updated_date','status','counted_view')
+    list_display = ('title','author','published_date','created_date','updated_date', 'login_require' ,'status','counted_view')
     list_filter = ('status','author')
     search_fields = ['title','content']
     summernote_fields = ('content',)
     
 admin.site.register(Comment,CommentAdmin)
+
 
     
 # Register your models here.

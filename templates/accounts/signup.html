@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="banner-area">
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center" style="min-height:90vh;">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h3>Create Account</h3>
+
+                    <div class="d-flex justify-content-end social_icon">
+                        <span><i class="fab fa-facebook-square"></i></span>
+                        <span><i class="fab fa-google-plus-square"></i></span>
+                        <span><i class="fab fa-twitter-square"></i></span>
+                    </div>
+                </div>
+
+                <div class="card-body">
+
+                    <form method="post">
+
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                       <label for="{{ form.username.id_for_label }}">Username</label>
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                        {{ form.username }}
+                    </div>
+                </div>
+
+                                        <div class="form-group">
+                    <label for="{{ form.password1.id_for_label }}">Password</label>
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                        {{ form.password1 }}
+                    </div>
+                </div>>
+
+                                        <div class="form-group">
+                    <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                        {{ form.password2 }}
+                    </div>
+                </div>
+
+                        <div class="form-group">
+
+                            <input type="submit"
+                                   value="Create Account"
+                                   class="btn float-right login_btn">
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
